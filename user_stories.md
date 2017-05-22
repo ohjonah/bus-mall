@@ -1,6 +1,5 @@
 # User Stories
 
-
 #### Developer:
 * As a developer, I want to write clean code, so that it is easy to read.
 * As a developer, I want to use object constructors, so that there is some modularity.
