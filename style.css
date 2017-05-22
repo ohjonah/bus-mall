@@ -1,0 +1,69 @@
+/* Global Styles */
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Title Header */
+
+header {
+  width: 960px;
+  height: 90px;
+  margin: 30px auto;
+}
+
+header h1 {
+  font-size: 72px;
+  font-weight: bold;
+}
+
+header span {
+  font-size: 24px;
+}
+
+/* Product Section */
+
+main {
+  width: 960px;
+  margin: 0px auto;
+}
+
+main div {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  float: left;
+}
+
+main div:nth-child(2) {
+  margin: 0px 30px;
+}
+
+main span {
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  padding: 15px 0;
+  background: rgba(0, 0, 0, .5);
+  text-align: center;
+  color: white;
+  font-size: 22px;
+}
+
+/* Footer */
+
+footer {
+  width: 960px;
+  height: 90px;
+  margin: 60px auto 0 auto;
+}
+
+footer span {
+  display: block;
+  text-align: center;
+}
+
+.clearfix {
+  clear: both;
+}
