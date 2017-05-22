@@ -7,23 +7,61 @@ function Images(name, path, shown, clicked) {
   this.clicked = 0;
 }
 
-var bag = new Images('bag', 'img/' + name + '.jpg', false, 0);
-var banana = new Images('banana', 'img/' + name + '.jpg', false, 0);
-var bathroom = new Images('bathroom', 'img/' + name + '.jpg', false, 0);
-var boots = new Images('boots', 'img/' + name + '.jpg', false, 0);
-var breakfast = new Images('breakfast', 'img/' + name + '.jpg', false, 0);
-var bubblegum = new Images('bubblegum', 'img/' + name + '.jpg', false, 0);
-var chair = new Images('chair', 'img/' + name + '.jpg', false, 0);
-var cthulhu = new Images('cthulhu', 'img/' + name + '.jpg', false, 0);
-var dogDuck = new Images('dog-duck', 'img/' + name + '.jpg', false, 0);
-var dragon = new Images('dragon', 'img/' + name + '.jpg', false, 0);
-var pen = new Images('pen', 'img/' + name + '.jpg', false, 0);
-var petSweep = new Images('pet-sweep', 'img/' + name + '.jpg', false, 0);
-var scissors = new Images('scissors', 'img/' + name + '.jpg', false, 0);
-var shark = new Images('shark', 'img/' + name + '.jpg', false, 0);
-var sweep = new Images('sweep', 'img/' + name + '.png', false, 0);
-var tauntaun = new Images('tauntaun', 'img/' + name + '.jpg', false, 0);
-var unicorn = new Images('unicorn', 'img/' + name + '.jpg', false, 0);
-var usb = new Images('usb', 'img/' + name + '.gif', false, 0);
-var waterCan = new Images('water-can', 'img/' + name + '.jpg', false, 0);
-var wineGlass = new Images('wine-glass', 'img/' + name + '.jpg', false, 0);
+var bag = new Images('bag', 'img/bag.jpg', false, 0);
+var banana = new Images('banana', 'img/banana.jpg', false, 0);
+var bathroom = new Images('bathroom', 'img/bathroom.jpg', false, 0);
+var boots = new Images('boots', 'img/boots.jpg', false, 0);
+var breakfast = new Images('breakfast', 'img/breakfast.jpg', false, 0);
+var bubblegum = new Images('bubblegum', 'img/bubblegum.jpg', false, 0);
+var chair = new Images('chair', 'img/chair.jpg', false, 0);
+var cthulhu = new Images('cthulhu', 'img/cthulhu.jpg', false, 0);
+var dogDuck = new Images('dog-duck', 'img/dog-duck.jpg', false, 0);
+var dragon = new Images('dragon', 'img/dragon.jpg', false, 0);
+var pen = new Images('pen', 'img/pen.jpg', false, 0);
+var petSweep = new Images('pet-sweep', 'img/pet-sweep.jpg', false, 0);
+var scissors = new Images('scissors', 'img/scissors.jpg', false, 0);
+var shark = new Images('shark', 'img/shark.jpg', false, 0);
+var sweep = new Images('sweep', 'img/sweep.png', false, 0);
+var tauntaun = new Images('tauntaun', 'img/tauntaun.jpg', false, 0);
+var unicorn = new Images('unicorn', 'img/unicorn.jpg', false, 0);
+var usb = new Images('usb', 'img/usb.gif', false, 0);
+var waterCan = new Images('water-can', 'img/water-can.jpg', false, 0);
+var wineGlass = new Images('wine-glass', 'img/wine-glass.jpg', false, 0);
+
+var counter = 0;
+
+var gallery = [bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass];
+
+var imageOne = document.getElementById('image-one');
+
+function randomImgOnDom() {
+  var ranNum = Math.floor(Math.random() * 21);
+  imageOne.src = (gallery[ranNum]).path;
+}
+
+randomImgOnDom();
+
+  // imageOne.setAttribute('src', gallery[]);
+// var imageTwo = document.getElementById('image-two');
+// var imageThree = document.getElementById('image-three');
+//
+// function () {
+//   var ranNum = Math.floor(Math.random() * 21);
+//   console.log(ranNum);
+//   imageOne.setAttribute('img src', gallery[ranNum].path);
+// };
+
+
+
+
+// imageOne.setAttribute('src', 'img/chair.jpg')
+
+
+
+
+
+
+
+// Images.prototype.statsCounter = function () {
+//
+// }
