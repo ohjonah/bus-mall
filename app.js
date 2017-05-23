@@ -40,22 +40,24 @@ var imageThree = document.getElementById('image-three');
 
 
 function randomNumberGenerator() {
-  var ranNumOne = Math.floor(Math.random() * 21);
-  var ranNumTwo = Math.floor(Math.random() * 21);
-  var ranNumThree = Math.floor(Math.random() * 21);
-  randNumSetOne.push(ranNumOne, ranNumTwo, ranNumThree);
+  var randNumOne = Math.floor(Math.random() * 20);
+  var randNumTwo = Math.floor(Math.random() * 20);
+  var randNumThree = Math.floor(Math.random() * 20);
+
+  if (randNumOne === randNumTwo) {
+    
+  }
+    }
+  console.log(randNumOne, randNumTwo, randNumThree);
 }
+
+
 
 function randomImgOnDom() {
   imageOne.src = (gallery[randNumSetOne[0]]).path;
   imageTwo.src = (gallery[randNumSetOne[1]]).path;
   imageThree.src = (gallery[randNumSetOne[2]]).path;
 }
-
-
-
-
-
 randomNumberGenerator();
 randomImgOnDom();
 console.log('random num array', randNumSetOne);
