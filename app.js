@@ -31,6 +31,7 @@ var wineglass = new Images('wine-glass', 'img/wine-glass.jpg', false, 0);
 var counter = 0;
 var randNumSetOne = [];
 var chosenImages = [];
+var shownImages =[];
 
 var gallery = [bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogduck, dragon, pen, petsweep, scissors, shark, sweep, tauntaun, unicorn, usb, watercan, wineglass];
 
@@ -46,6 +47,7 @@ function randNumGenerator() {
 
     if (randNumOne !== randNumTwo && randNumThree !== randNumOne && randNumThree !== randNumTwo) {
       randNumSetOne.push(randNumOne, randNumTwo, randNumThree);
+      shownImages.push(randNumOne, randNumTwo, randNumThree);
       break;
     }
   }
@@ -60,6 +62,9 @@ function secondRandNumGenerator() {
     if (randNumOne !== randNumTwo && randNumThree !== randNumOne && randNumThree !== randNumTwo) {
       if (randNumOne !== randNumSetOne[0] && randNumOne !== randNumSetOne[1] && randNumOne !== randNumSetOne[2] && randNumTwo !== randNumSetOne[0] && randNumTwo !== randNumSetOne[1] && randNumTwo !== randNumSetOne[2]  && randNumThree !== randNumSetOne[0] && randNumThree !== randNumSetOne[1] && randNumThree !== randNumSetOne[2]) {
         randNumSetOne = [randNumOne, randNumTwo, randNumThree];
+
+        shownImages.push(randNumOne, randNumTwo, randNumThree);
+
         break;
       }
     }
@@ -76,41 +81,43 @@ function clickImage() {
   imageOne.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-    console.log(chosenImages);
     counter++;
+    console.log(counter);
+    refreshedImages();
   });
 
   imageTwo.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-    console.log(chosenImages);
     counter++;
+    refreshedImages();
+    console.log(counter);
   });
 
   imageThree.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-    console.log(chosenImages);
     counter++;
+    refreshedImages();
+    console.log(counter);
   });
+}
+
+function refreshedImages() {
+  secondRandNumGenerator();
+  randomImgOnDom();
+  clickImage();
+  console.log('outside of scope:', counter);
+  console.log('rand one', randNumSetOne);
+  console.log('shown images', shownImages);
 }
 
 randNumGenerator();
 console.log('rand one', randNumSetOne);
+console.log('shown images', shownImages);
 randomImgOnDom();
 clickImage();
-secondRandNumGenerator();
-console.log('rand two', randNumSetOne);
-secondRandNumGenerator();
-console.log('rand three', randNumSetOne);
-secondRandNumGenerator();
-console.log('rand four', randNumSetOne);
-secondRandNumGenerator();
-console.log('rand five', randNumSetOne);
-secondRandNumGenerator();
-console.log('rand six', randNumSetOne);
-secondRandNumGenerator();
-console.log('rand seven', randNumSetOne);
+
 
   // imageOne.setAttribute('src', gallery[]);
 
