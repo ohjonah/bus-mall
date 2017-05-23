@@ -87,7 +87,7 @@ function clickImage() {
 function refreshedImages() {
 
   if (counter === 25) {
-    alert('done');
+    removeEventHandler();
     clickedImageIndexConverter();
 
   } else {
@@ -117,8 +117,29 @@ function shownImagesCalc() {
   for (var i = 0; i < shownImages.length; i++) {
     allImageObjects[shownImages[i]].shown++;
   }
+  clickShownPercent();
+}
+
+function clickShownPercent() {
+  for (var i = 0; i < allImageObjects.length; i++) {
+    allImageObjects[i].clickThrough = ((allImageObjects[i].clicked/allImageObjects[i].shown)*100) + '%';
+  }
+  clickOverallClickPercent();
+}
+
+function clickOverallClickPercent() {
+  for (var i = 0; i < allImageObjects.length; i++) {
+    allImageObjects[i].overallClickRate = ((allImageObjects[i].clicked/shownImages.length)*100) + '%';
+  }
   console.log(allImageObjects);
 }
+
+function removeEventHandler() {
+  imageOne.onclick = null;
+  imageTwo.onclick = null;
+  imageThree.onclick = null;
+}
+
 
 instantiateImages();
 randNumGenerator();
