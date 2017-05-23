@@ -29,7 +29,7 @@ var watercan = new Images('water-can', 'img/water-can.jpg', false, 0);
 var wineglass = new Images('wine-glass', 'img/wine-glass.jpg', false, 0);
 
 var counter = 0;
-var randNumSetOne = [];
+var randNumSet = [];
 var chosenImages = [];
 var shownImages =[];
 
@@ -39,20 +39,6 @@ var imageOne = document.getElementById('image-one');
 var imageTwo = document.getElementById('image-two');
 var imageThree = document.getElementById('image-three');
 
-function randNumGenerator() {
-  while (true) {
-    var randNumOne = Math.floor(Math.random() * 20);
-    var randNumTwo = Math.floor(Math.random() * 20);
-    var randNumThree = Math.floor(Math.random() * 20);
-
-    if (randNumOne !== randNumTwo && randNumThree !== randNumOne && randNumThree !== randNumTwo) {
-      randNumSetOne.push(randNumOne, randNumTwo, randNumThree);
-      shownImages.push(randNumOne, randNumTwo, randNumThree);
-      break;
-    }
-  }
-}
-
 function secondRandNumGenerator() {
   while (true) {
     var randNumOne = Math.floor(Math.random() * 20);
@@ -60,10 +46,17 @@ function secondRandNumGenerator() {
     var randNumThree = Math.floor(Math.random() * 20);
 
     if (randNumOne !== randNumTwo && randNumThree !== randNumOne && randNumThree !== randNumTwo) {
-      if (randNumOne !== randNumSetOne[0] && randNumOne !== randNumSetOne[1] && randNumOne !== randNumSetOne[2] && randNumTwo !== randNumSetOne[0] && randNumTwo !== randNumSetOne[1] && randNumTwo !== randNumSetOne[2]  && randNumThree !== randNumSetOne[0] && randNumThree !== randNumSetOne[1] && randNumThree !== randNumSetOne[2]) {
-        randNumSetOne = [randNumOne, randNumTwo, randNumThree];
+      if (randNumOne !== randNumSet[0] && randNumOne !== randNumSet[1] && randNumOne !== randNumSet[2] && randNumTwo !== randNumSet[0] && randNumTwo !== randNumSet[1] && randNumTwo !== randNumSet[2]  && randNumThree !== randNumSet[0] && randNumThree !== randNumSet[1] && randNumThree !== randNumSet[2]) {
+
+        randNumSet[0] = randNumOne;
+        randNumSet[1] = randNumTwo;
+        randNumSet[2] = randNumThree;
+        console.log('ran num set: ', randNumSet);
 
         shownImages.push(randNumOne, randNumTwo, randNumThree);
+
+        counter++;
+        console.log(counter);
 
         break;
       }
@@ -72,49 +65,46 @@ function secondRandNumGenerator() {
 }
 
 function randomImgOnDom() {
-  imageOne.src = (gallery[randNumSetOne[0]]).path;
-  imageTwo.src = (gallery[randNumSetOne[1]]).path;
-  imageThree.src = (gallery[randNumSetOne[2]]).path;
+  imageOne.src = (gallery[randNumSet[0]]).path;
+  imageTwo.src = (gallery[randNumSet[1]]).path;
+  imageThree.src = (gallery[randNumSet[2]]).path;
 }
 
 function clickImage() {
   imageOne.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-    counter++;
-    console.log(counter);
     refreshedImages();
   });
 
   imageTwo.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-    counter++;
     refreshedImages();
-    console.log(counter);
   });
 
   imageThree.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-    counter++;
     refreshedImages();
-    console.log(counter);
   });
 }
 
 function refreshedImages() {
-  secondRandNumGenerator();
-  randomImgOnDom();
-  clickImage();
-  console.log('outside of scope:', counter);
-  console.log('rand one', randNumSetOne);
-  console.log('shown images', shownImages);
+
+  if (counter === 10) {
+    alert('done');
+
+  } else {
+    secondRandNumGenerator();
+    randomImgOnDom();
+    clickImage();
+    console.log('outside of scope:', counter);
+    console.log('shown images', shownImages);
+  }
 }
 
-randNumGenerator();
-console.log('rand one', randNumSetOne);
-console.log('shown images', shownImages);
+secondRandNumGenerator();
 randomImgOnDom();
 clickImage();
 
