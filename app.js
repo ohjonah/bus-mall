@@ -110,12 +110,14 @@ function clickedImageCalc() {
   for (var i = 0; i < clickedImages.length; i++) {
     allImageObjects[clickedImages[i]].clicked++;
   }
+  shownImagesCalc();
 }
 
 function shownImagesCalc() {
   for (var i = 0; i < shownImages.length; i++) {
-    all
+    allImageObjects[shownImages[i]].shown++;
   }
+  console.log(allImageObjects);
 }
 
 instantiateImages();
