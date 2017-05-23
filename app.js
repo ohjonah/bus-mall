@@ -70,24 +70,45 @@ function randomImgOnDom() {
   imageThree.src = (gallery[randNumSet[2]]).path;
 }
 
+// function clickImage() {
+//   imageOne.addEventListener('click', function() {
+//     var srcAttr = this.getAttribute('src');
+//     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
+//   });
+//
+//   imageTwo.addEventListener('click', function() {
+//     var srcAttr = this.getAttribute('src');
+//     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
+//   });
+//
+//   imageThree.addEventListener('click', function() {
+//     var srcAttr = this.getAttribute('src');
+//     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
+//   });
+//
+//   refreshedImages();
+// }
+
 function clickImage() {
-  imageOne.addEventListener('click', function() {
+  imageOne.onclick = function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
     refreshedImages();
-  });
+  };
 
-  imageTwo.addEventListener('click', function() {
+  imageTwo.onclick = function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
     refreshedImages();
-  });
+  };
 
-  imageThree.addEventListener('click', function() {
+  imageThree.onclick = function() {
     var srcAttr = this.getAttribute('src');
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
     refreshedImages();
-  });
+  };
+
+
 }
 
 function refreshedImages() {
