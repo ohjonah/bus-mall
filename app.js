@@ -70,25 +70,6 @@ function randomImgOnDom() {
   imageThree.src = (gallery[randNumSet[2]]).path;
 }
 
-// function clickImage() {
-//   imageOne.addEventListener('click', function() {
-//     var srcAttr = this.getAttribute('src');
-//     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-//   });
-//
-//   imageTwo.addEventListener('click', function() {
-//     var srcAttr = this.getAttribute('src');
-//     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-//   });
-//
-//   imageThree.addEventListener('click', function() {
-//     var srcAttr = this.getAttribute('src');
-//     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
-//   });
-//
-//   refreshedImages();
-// }
-
 function clickImage() {
   imageOne.onclick = function() {
     var srcAttr = this.getAttribute('src');
@@ -107,13 +88,12 @@ function clickImage() {
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
     refreshedImages();
   };
-
-
+  console.log(chosenImages.length);
 }
 
 function refreshedImages() {
 
-  if (counter === 10) {
+  if (counter === 25) {
     alert('done');
 
   } else {
