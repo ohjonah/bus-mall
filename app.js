@@ -103,10 +103,19 @@ function clickedImageIndexConverter() {
   for (var i = 0; i < clickedImages.length; i++) {
     clickedImages[i] = allImages.indexOf(clickedImages[i]);
   }
+  clickedImageCalc();
 }
 
 function clickedImageCalc() {
-  
+  for (var i = 0; i < clickedImages.length; i++) {
+    allImageObjects[clickedImages[i]].clicked++;
+  }
+}
+
+function shownImagesCalc() {
+  for (var i = 0; i < shownImages.length; i++) {
+    all
+  }
 }
 
 instantiateImages();
