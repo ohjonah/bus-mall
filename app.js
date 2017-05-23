@@ -38,7 +38,7 @@ var imageOne = document.getElementById('image-one');
 var imageTwo = document.getElementById('image-two');
 var imageThree = document.getElementById('image-three');
 
-function randomNumberGenerator() {
+function randNumGenerator() {
   while (true) {
     var randNumOne = Math.floor(Math.random() * 20);
     var randNumTwo = Math.floor(Math.random() * 20);
@@ -46,8 +46,22 @@ function randomNumberGenerator() {
 
     if (randNumOne !== randNumTwo && randNumThree !== randNumOne && randNumThree !== randNumTwo) {
       randNumSetOne.push(randNumOne, randNumTwo, randNumThree);
-      console.log(randNumSetOne);
       break;
+    }
+  }
+}
+
+function secondRandNumGenerator() {
+  while (true) {
+    var randNumOne = Math.floor(Math.random() * 20);
+    var randNumTwo = Math.floor(Math.random() * 20);
+    var randNumThree = Math.floor(Math.random() * 20);
+
+    if (randNumOne !== randNumTwo && randNumThree !== randNumOne && randNumThree !== randNumTwo) {
+      if (randNumOne !== randNumSetOne[0] && randNumOne !== randNumSetOne[1] && randNumOne !== randNumSetOne[2] && randNumTwo !== randNumSetOne[0] && randNumTwo !== randNumSetOne[1] && randNumTwo !== randNumSetOne[2]  && randNumThree !== randNumSetOne[0] && randNumThree !== randNumSetOne[1] && randNumThree !== randNumSetOne[2]) {
+        randNumSetOne = [randNumOne, randNumTwo, randNumThree];
+        break;
+      }
     }
   }
 }
@@ -61,36 +75,28 @@ function randomImgOnDom() {
 function clickImage() {
   imageOne.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
-    // srcAttr.split('.jpg')[0].split('/')[1].shown = true;
     srcAttr.split('.jpg')[0].split('/')[1].clicked++;
     console.log(srcAttr.split('.jpg')[0].split('/')[1]);
-    // console.log(srcAttr.split('.jpg')[0].split('/')[1].shown);
     console.log(srcAttr.split('.jpg')[0].split('/')[1].clicked);
   });
 
   imageTwo.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
-    // srcAttr.split('.jpg')[0].split('/')[1].shown = true;
     srcAttr.split('.jpg')[0].split('/')[1].clicked++;
-    console.log(srcAttr.split('.jpg')[0].split('/')[1]);
-    // console.log(srcAttr.split('.jpg')[0].split('/')[1].shown);
-    console.log(srcAttr.split('.jpg')[0].split('/')[1].clicked);
   });
 
   imageThree.addEventListener('click', function() {
     var srcAttr = this.getAttribute('src');
-    // srcAttr.split('.jpg')[0].split('/')[1].shown = true;
     srcAttr.split('.jpg')[0].split('/')[1].clicked++;
-    console.log(srcAttr.split('.jpg')[0].split('/')[1]);
-    // console.log(srcAttr.split('.jpg')[0].split('/')[1].shown);
-    console.log(srcAttr.split('.jpg')[0].split('/')[1].clicked);
   });
 }
 
-randomNumberGenerator();
+randNumGenerator();
+console.log('rand one', randNumSetOne);
 randomImgOnDom();
 clickImage();
-console.log('random num array', randNumSetOne);
+secondRandNumGenerator();
+console.log('rand two', randNumSetOne);
 
   // imageOne.setAttribute('src', gallery[]);
 
