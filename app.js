@@ -33,6 +33,7 @@ function instantiateImages() {
 var imageOne = document.getElementById('image-one');
 var imageTwo = document.getElementById('image-two');
 var imageThree = document.getElementById('image-three');
+var results = document.getElementById('results');
 
 function randNumGenerator() {
   while (true) {
@@ -89,7 +90,7 @@ function refreshedImages() {
   if (counter === 25) {
     removeEventHandler();
     clickedImageIndexConverter();
-
+    appendToDOM();
   } else {
     randNumGenerator();
     randomImgOnDom();
@@ -138,6 +139,15 @@ function removeEventHandler() {
   imageOne.onclick = null;
   imageTwo.onclick = null;
   imageThree.onclick = null;
+}
+
+function appendToDOM() {
+  var listArr = [];
+
+  for (var i = 0; i < allImageObjects.length; i++) {
+    listArr.push('<li>' + 'The picture: ' + allImageObjects[i].name + ' received ' + allImageObjects[i].clicked + ' clicks.' + '</li>');
+  }
+  results.innerHTML = listArr.join('');
 }
 
 

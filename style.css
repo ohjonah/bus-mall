@@ -55,20 +55,19 @@ main span {
   font-size: 22px;
 }
 
-/* Results */
-
-
 /* Footer */
 
 footer {
   width: 960px;
   height: 90px;
   margin: 60px auto 0 auto;
+  overflow: auto;
 }
 
-footer span {
+footer ul {
   display: block;
   text-align: center;
+  font-size: 16px;
 }
 
 .clearfix {
