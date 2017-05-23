@@ -55,9 +55,6 @@ function secondRandNumGenerator() {
 
         shownImages.push(randNumOne, randNumTwo, randNumThree);
 
-        counter++;
-        console.log(counter);
-
         break;
       }
     }
@@ -88,7 +85,8 @@ function clickImage() {
     chosenImages.push(srcAttr.split('.jpg')[0].split('/')[1]);
     refreshedImages();
   };
-  console.log(chosenImages.length);
+  console.log('chosen images arr:', chosenImages);
+  console.log('chosen images length:',chosenImages.length);
 }
 
 function refreshedImages() {
@@ -100,6 +98,7 @@ function refreshedImages() {
     secondRandNumGenerator();
     randomImgOnDom();
     clickImage();
+    counter++;
     console.log('outside of scope:', counter);
     console.log('shown images', shownImages);
   }
@@ -108,28 +107,3 @@ function refreshedImages() {
 secondRandNumGenerator();
 randomImgOnDom();
 clickImage();
-
-
-  // imageOne.setAttribute('src', gallery[]);
-
-//
-// function () {
-//   var ranNum = Math.floor(Math.random() * 21);
-//   console.log(ranNum);
-//   imageOne.setAttribute('img src', gallery[ranNum].path);
-// };
-
-
-
-
-// imageOne.setAttribute('src', 'img/chair.jpg')
-
-
-
-
-
-
-
-// Images.prototype.statsCounter = function () {
-//
-// }
