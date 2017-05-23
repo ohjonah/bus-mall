@@ -29,21 +29,39 @@ var waterCan = new Images('water-can', 'img/water-can.jpg', false, 0);
 var wineGlass = new Images('wine-glass', 'img/wine-glass.jpg', false, 0);
 
 var counter = 0;
+var randNumSetOne = [];
+var randNumSetTwo = [];
 
 var gallery = [bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass];
 
 var imageOne = document.getElementById('image-one');
+var imageTwo = document.getElementById('image-two');
+var imageThree = document.getElementById('image-three');
 
-function randomImgOnDom() {
-  var ranNum = Math.floor(Math.random() * 21);
-  imageOne.src = (gallery[ranNum]).path;
+
+function randomNumberGenerator() {
+  var ranNumOne = Math.floor(Math.random() * 21);
+  var ranNumTwo = Math.floor(Math.random() * 21);
+  var ranNumThree = Math.floor(Math.random() * 21);
+  randNumSetOne.push(ranNumOne, ranNumTwo, ranNumThree);
 }
 
+function randomImgOnDom() {
+  imageOne.src = (gallery[randNumSetOne[0]]).path;
+  imageTwo.src = (gallery[randNumSetOne[1]]).path;
+  imageThree.src = (gallery[randNumSetOne[2]]).path;
+}
+
+
+
+
+
+randomNumberGenerator();
 randomImgOnDom();
+console.log('random num array', randNumSetOne);
 
   // imageOne.setAttribute('src', gallery[]);
-// var imageTwo = document.getElementById('image-two');
-// var imageThree = document.getElementById('image-three');
+
 //
 // function () {
 //   var ranNum = Math.floor(Math.random() * 21);
