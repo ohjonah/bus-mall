@@ -21,7 +21,7 @@ var pen = new Images('pen', 'img/pen.jpg', false, 0);
 var petSweep = new Images('pet-sweep', 'img/pet-sweep.jpg', false, 0);
 var scissors = new Images('scissors', 'img/scissors.jpg', false, 0);
 var shark = new Images('shark', 'img/shark.jpg', false, 0);
-var sweep = new Images('sweep', 'img/sweep.png', false, 0);
+var sweep = new Images('sweep', 'img/sweep.jpg', false, 0);
 var tauntaun = new Images('tauntaun', 'img/tauntaun.jpg', false, 0);
 var unicorn = new Images('unicorn', 'img/unicorn.jpg', false, 0);
 var usb = new Images('usb', 'img/usb.gif', false, 0);
@@ -58,7 +58,38 @@ function randomImgOnDom() {
   imageThree.src = (gallery[randNumSetOne[2]]).path;
 }
 
+function clickImage() {
+  imageOne.addEventListener('click', function() {
+    var srcAttr = this.getAttribute('src');
+    // srcAttr.split('.jpg')[0].split('/')[1].shown = true;
+    srcAttr.split('.jpg')[0].split('/')[1].clicked++;
+    console.log(srcAttr.split('.jpg')[0].split('/')[1]);
+    // console.log(srcAttr.split('.jpg')[0].split('/')[1].shown);
+    console.log(srcAttr.split('.jpg')[0].split('/')[1].clicked);
+  });
+
+  imageTwo.addEventListener('click', function() {
+    var srcAttr = this.getAttribute('src');
+    // srcAttr.split('.jpg')[0].split('/')[1].shown = true;
+    srcAttr.split('.jpg')[0].split('/')[1].clicked++;
+    console.log(srcAttr.split('.jpg')[0].split('/')[1]);
+    // console.log(srcAttr.split('.jpg')[0].split('/')[1].shown);
+    console.log(srcAttr.split('.jpg')[0].split('/')[1].clicked);
+  });
+
+  imageThree.addEventListener('click', function() {
+    var srcAttr = this.getAttribute('src');
+    // srcAttr.split('.jpg')[0].split('/')[1].shown = true;
+    srcAttr.split('.jpg')[0].split('/')[1].clicked++;
+    console.log(srcAttr.split('.jpg')[0].split('/')[1]);
+    // console.log(srcAttr.split('.jpg')[0].split('/')[1].shown);
+    console.log(srcAttr.split('.jpg')[0].split('/')[1].clicked);
+  });
+}
+
+randomNumberGenerator();
 randomImgOnDom();
+clickImage();
 console.log('random num array', randNumSetOne);
 
   // imageOne.setAttribute('src', gallery[]);
