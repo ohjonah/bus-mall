@@ -38,10 +38,6 @@ main div {
 main div:nth-child(2) {
   margin: 0px 30px;
 }
-/*
-main img {
-  width: 300px;
-}*/
 
 main span {
   width: 100%;
@@ -59,7 +55,7 @@ main span {
 
 footer {
   width: 960px;
-  height: 90px;
+  height: 150px;
   margin: 60px auto 0 auto;
   overflow: auto;
 }
@@ -67,7 +63,7 @@ footer {
 footer ul {
   display: block;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .clearfix {
