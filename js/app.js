@@ -155,3 +155,19 @@ instantiateImages();
 randNumGenerator();
 randomImgOnDom();
 clickImage();
+
+var canvas = document.getElementById('chart');
+var ctx = canvas.getContext('2d');
+
+var chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['coding', 'fishing', 'cooking', 'skateboarding'],
+    datasets: [{
+      label: 'Votes for my Fav Thangz',
+      data: arrayBuilder(),
+      backgroundColor: ['#444444', '#888888', '#e3e3e3', '#000000']
+    }]
+  },
+  options: {}
+});

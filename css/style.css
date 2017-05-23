@@ -66,6 +66,10 @@ footer ul {
   font-size: 20px;
 }
 
+footer div canvas {
+  
+}
+
 .clearfix {
   clear: both;
 }
