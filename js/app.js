@@ -16,6 +16,8 @@ var allImages = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum',
 if (localStorage.instantiatedImages) {
   var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
   removeEventHandler();
+  chartIndividualVotes();
+  appendToDOM();
 
 } else {
   instantiatedImages = [];
@@ -113,7 +115,8 @@ function refreshedImages() {
 
   if (counter === 25) {
     removeEventHandler();
-    clickedImageIndexConverter();
+    // calculates object property values
+    calculationStation();
     chartIndividualVotes();
     appendToDOM();
   } else {
@@ -129,7 +132,6 @@ function clickedImageIndexConverter() {
   for (var i = 0; i < clickedImages.length; i++) {
     clickedImages[i] = allImages.indexOf(clickedImages[i]);
   }
-  clickedImageCalc();
 }
 
 // increments images selected by user
@@ -137,7 +139,6 @@ function clickedImageCalc() {
   for (var i = 0; i < clickedImages.length; i++) {
     instantiatedImages[clickedImages[i]].clicked++;
   }
-  shownImagesCalc();
 }
 
 // increments shown property
@@ -145,7 +146,6 @@ function shownImagesCalc() {
   for (var i = 0; i < shownImages.length; i++) {
     instantiatedImages[shownImages[i]].shown++;
   }
-  clickShownPercent();
 }
 
 // ratio of clicked images to how many times it was displayed
@@ -153,7 +153,6 @@ function clickShownPercent() {
   for (var i = 0; i < instantiatedImages.length; i++) {
     instantiatedImages[i].clickThrough = ((instantiatedImages[i].clicked/instantiatedImages[i].shown)*100) + '%';
   }
-  clickOverallClickPercent();
 }
 
 // ratio of how many times it was clicked for all images displayed
@@ -161,8 +160,17 @@ function clickOverallClickPercent() {
   for (var i = 0; i < instantiatedImages.length; i++) {
     instantiatedImages[i].overallClickRate = ((instantiatedImages[i].clicked/shownImages.length)*100) + '%';
   }
+}
+
+function calculationStation() {
+  clickedImageIndexConverter();
+  clickedImageCalc();
+  shownImagesCalc();
+  clickShownPercent();
+  clickOverallClickPercent();
   save();
 }
+
 
 function chartIndividualVotes() {
   var clickedData = [];
