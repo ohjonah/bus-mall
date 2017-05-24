@@ -8,7 +8,6 @@ var shownImages =[];
 var allImages = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'watercan', 'wineglass'];
 
 var instantiatedImages = [];
-var data = [];
 
 function Images(name, path) {
   this.name = name;
@@ -44,7 +43,9 @@ var ctx = canvas.getContext('2d');
 
 // non-repeating random number generator
 function randNumGenerator() {
-  while (true) {
+  var flag = false;
+
+  while (flag !== true) {
     var randNumOne = Math.floor(Math.random() * 20);
     var randNumTwo = Math.floor(Math.random() * 20);
     var randNumThree = Math.floor(Math.random() * 20);
@@ -58,6 +59,7 @@ function randNumGenerator() {
         console.log('ran num set: ', randNumSet);
 
         shownImages.push(randNumOne, randNumTwo, randNumThree);
+        flag = true;
 
         break;
       }
