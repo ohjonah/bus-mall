@@ -56,7 +56,6 @@ function randNumGenerator() {
         randNumSet[0] = randNumOne;
         randNumSet[1] = randNumTwo;
         randNumSet[2] = randNumThree;
-        console.log('ran num set: ', randNumSet);
 
         shownImages.push(randNumOne, randNumTwo, randNumThree);
         flag = true;
@@ -93,8 +92,6 @@ function clickImage() {
     clickedImages.push(srcAttr.split('.')[0].split('/')[1]);
     refreshedImages();
   };
-  console.log('clicked images arr:', clickedImages);
-  console.log('clicked images length:',clickedImages.length);
 }
 
 // conditional to see if it has user has selected 25 pictures
@@ -110,11 +107,9 @@ function refreshedImages() {
     randomImgOnDom();
     clickImage();
     counter++;
-    console.log('shown images:', shownImages);
   }
 }
 
-// Calculation Station:
 // converts array of clicked images as strings to index numbers
 function clickedImageIndexConverter() {
   for (var i = 0; i < clickedImages.length; i++) {
@@ -130,7 +125,6 @@ function clickedImageCalc() {
   }
   shownImagesCalc();
 }
-
 
 // increments shown property
 function shownImagesCalc() {
@@ -153,7 +147,7 @@ function clickOverallClickPercent() {
   for (var i = 0; i < instantiatedImages.length; i++) {
     instantiatedImages[i].overallClickRate = ((instantiatedImages[i].clicked/shownImages.length)*100) + '%';
   }
-  console.log(instantiatedImages);
+  save();
 }
 
 function chartIndividualVotes() {
@@ -179,6 +173,12 @@ function chartIndividualVotes() {
   });
 }
 
+function save() {
+  localStorage.instantiatedImages = JSON.stringify(instantiatedImages);
+  console.log('list array:', instantiatedImages);
+  console.log('localStorage List', localStorage.instantiatedImages);
+}
+
 // removes event handler
 function removeEventHandler() {
   imageOne.onclick = null;
@@ -195,9 +195,6 @@ function appendToDOM() {
   }
   results.innerHTML = listArr.join('');
 }
-
-
-
 
 instantiateImages();
 randNumGenerator();
