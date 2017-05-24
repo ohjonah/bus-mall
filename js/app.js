@@ -1,13 +1,30 @@
 'use strict';
 
+
 var counter = 1;
 var randNumSet = [];
 var clickedImages = [];
 var shownImages =[];
 
+// captures DOM elements
+var imageOne = document.getElementById('image-one');
+var imageTwo = document.getElementById('image-two');
+var imageThree = document.getElementById('image-three');
+
 var allImages = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'watercan', 'wineglass'];
 
-var instantiatedImages = [];
+if (localStorage.instantiatedImages) {
+  var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
+  removeEventHandler();
+
+} else {
+  instantiatedImages = [];
+
+  instantiateImages();
+  randNumGenerator();
+  randomImgOnDom();
+  clickImage();
+}
 
 function Images(name, path) {
   this.name = name;
@@ -30,10 +47,7 @@ function instantiateImages() {
   }
 }
 
-// captures DOM elements
-var imageOne = document.getElementById('image-one');
-var imageTwo = document.getElementById('image-two');
-var imageThree = document.getElementById('image-three');
+
 var results = document.getElementById('results');
 
 // makes and displays chart
@@ -195,8 +209,3 @@ function appendToDOM() {
   }
   results.innerHTML = listArr.join('');
 }
-
-instantiateImages();
-randNumGenerator();
-randomImgOnDom();
-clickImage();
