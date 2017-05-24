@@ -36,7 +36,9 @@ var imageThree = document.getElementById('image-three');
 var results = document.getElementById('results');
 
 function randNumGenerator() {
-  while (true) {
+  var flag = false;
+
+  while (flag !== true) {
     var randNumOne = Math.floor(Math.random() * 20);
     var randNumTwo = Math.floor(Math.random() * 20);
     var randNumThree = Math.floor(Math.random() * 20);
@@ -50,6 +52,8 @@ function randNumGenerator() {
         console.log('ran num set: ', randNumSet);
 
         shownImages.push(randNumOne, randNumTwo, randNumThree);
+        
+        flag = true;
 
         break;
       }
