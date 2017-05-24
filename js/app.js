@@ -10,8 +10,14 @@ var shownImages =[];
 var imageOne = document.getElementById('image-one');
 var imageTwo = document.getElementById('image-two');
 var imageThree = document.getElementById('image-three');
+var results = document.getElementById('results');
 
 var allImages = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'watercan', 'wineglass'];
+
+// makes and displays chart
+var canvas = document.getElementById('chart');
+var ctx = canvas.getContext('2d');
+
 
 if (localStorage.instantiatedImages) {
   var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
@@ -20,12 +26,7 @@ if (localStorage.instantiatedImages) {
   appendToDOM();
 
 } else {
-  instantiatedImages = [];
-
-  instantiateImages();
-  randNumGenerator();
-  randomImgOnDom();
-  clickImage();
+  render();
 }
 
 function Images(name, path) {
@@ -33,6 +34,15 @@ function Images(name, path) {
   this.path = path;
   this.clicked = 0;
   this.shown = 0;
+}
+
+function render() {
+  instantiatedImages = [];
+
+  instantiateImages();
+  randNumGenerator();
+  randomImgOnDom();
+  clickImage();
 }
 
 function instantiateImages() {
@@ -48,14 +58,6 @@ function instantiateImages() {
     }
   }
 }
-
-
-var results = document.getElementById('results');
-
-// makes and displays chart
-var canvas = document.getElementById('chart');
-var ctx = canvas.getContext('2d');
-
 
 // non-repeating random number generator
 function randNumGenerator() {
