@@ -7,7 +7,8 @@ var shownImages =[];
 
 var allImages = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'watercan', 'wineglass'];
 
-var allImageObjects = [];
+var instantiatedImages = [];
+var data = [];
 
 function Images(name, path) {
   this.name = name;
@@ -19,22 +20,29 @@ function Images(name, path) {
 function instantiateImages() {
   for (var i = 0; i < allImages.length; i++) {
     if (allImages[i] !== 'sweep' && allImages[i] !== 'usb') {
-      allImageObjects.push(new Images(allImages[i], 'img/' + allImages[i] + '.jpg'));
+      instantiatedImages.push(new Images(allImages[i], 'img/' + allImages[i] + '.jpg'));
 
     } else if (allImages[i] === 'sweep') {
-      allImageObjects.push(new Images(allImages[i], 'img/' + allImages[i] + '.png'));
+      instantiatedImages.push(new Images(allImages[i], 'img/' + allImages[i] + '.png'));
 
     } else if (allImages[i] === 'usb') {
-      allImageObjects.push(new Images(allImages[i], 'img/' + allImages[i] + '.gif'));
+      instantiatedImages.push(new Images(allImages[i], 'img/' + allImages[i] + '.gif'));
     }
   }
 }
 
+// captures DOM elements
 var imageOne = document.getElementById('image-one');
 var imageTwo = document.getElementById('image-two');
 var imageThree = document.getElementById('image-three');
 var results = document.getElementById('results');
 
+// makes and displays chart
+var canvas = document.getElementById('chart');
+var ctx = canvas.getContext('2d');
+
+
+// non-repeating random number generator
 function randNumGenerator() {
   while (true) {
     var randNumOne = Math.floor(Math.random() * 20);
@@ -57,12 +65,14 @@ function randNumGenerator() {
   }
 }
 
+// assigns random number to array position
 function randomImgOnDom() {
-  imageOne.src = (allImageObjects[randNumSet[0]]).path;
-  imageTwo.src = (allImageObjects[randNumSet[1]]).path;
-  imageThree.src = (allImageObjects[randNumSet[2]]).path;
+  imageOne.src = (instantiatedImages[randNumSet[0]]).path;
+  imageTwo.src = (instantiatedImages[randNumSet[1]]).path;
+  imageThree.src = (instantiatedImages[randNumSet[2]]).path;
 }
 
+// action attached to click
 function clickImage() {
   imageOne.onclick = function() {
     var srcAttr = this.getAttribute('src');
@@ -85,11 +95,13 @@ function clickImage() {
   console.log('clicked images length:',clickedImages.length);
 }
 
+// conditional to see if it has user has selected 25 pictures
 function refreshedImages() {
 
   if (counter === 25) {
     removeEventHandler();
     clickedImageIndexConverter();
+    chartIndividualVotes();
     appendToDOM();
   } else {
     randNumGenerator();
@@ -100,6 +112,8 @@ function refreshedImages() {
   }
 }
 
+// Calculation Station:
+// converts array of clicked images as strings to index numbers
 function clickedImageIndexConverter() {
   for (var i = 0; i < clickedImages.length; i++) {
     clickedImages[i] = allImages.indexOf(clickedImages[i]);
@@ -107,48 +121,80 @@ function clickedImageIndexConverter() {
   clickedImageCalc();
 }
 
+// increments images selected by user
 function clickedImageCalc() {
   for (var i = 0; i < clickedImages.length; i++) {
-    allImageObjects[clickedImages[i]].clicked++;
+    instantiatedImages[clickedImages[i]].clicked++;
   }
   shownImagesCalc();
 }
 
+
+// increments shown property
 function shownImagesCalc() {
   for (var i = 0; i < shownImages.length; i++) {
-    allImageObjects[shownImages[i]].shown++;
+    instantiatedImages[shownImages[i]].shown++;
   }
   clickShownPercent();
 }
 
+// ratio of clicked images to how many times it was displayed
 function clickShownPercent() {
-  for (var i = 0; i < allImageObjects.length; i++) {
-    allImageObjects[i].clickThrough = ((allImageObjects[i].clicked/allImageObjects[i].shown)*100) + '%';
+  for (var i = 0; i < instantiatedImages.length; i++) {
+    instantiatedImages[i].clickThrough = ((instantiatedImages[i].clicked/instantiatedImages[i].shown)*100) + '%';
   }
   clickOverallClickPercent();
 }
 
+// ratio of how many times it was clicked for all images displayed
 function clickOverallClickPercent() {
-  for (var i = 0; i < allImageObjects.length; i++) {
-    allImageObjects[i].overallClickRate = ((allImageObjects[i].clicked/shownImages.length)*100) + '%';
+  for (var i = 0; i < instantiatedImages.length; i++) {
+    instantiatedImages[i].overallClickRate = ((instantiatedImages[i].clicked/shownImages.length)*100) + '%';
   }
-  console.log(allImageObjects);
+  console.log(instantiatedImages);
 }
 
+function chartIndividualVotes() {
+  var clickedData = [];
+  var clickShownData = [];
+
+  for (var i = 0; i < instantiatedImages.length; i++) {
+    clickedData.push(instantiatedImages[i].clicked);
+    clickShownData.push(instantiatedImages[i].shown);
+  }
+
+  var chart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: allImages,
+      datasets: [{
+        label: 'Individual Votes per Product',
+        data: clickShownData,
+        backgroundColor: ['#C051FF', '#F4FF57', '#23E8D3', '#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3', '#C051FF']
+      }],
+    },
+    options: {}
+  });
+}
+
+// removes event handler
 function removeEventHandler() {
   imageOne.onclick = null;
   imageTwo.onclick = null;
   imageThree.onclick = null;
 }
 
+// appends results to DOM
 function appendToDOM() {
   var listArr = [];
 
-  for (var i = 0; i < allImageObjects.length; i++) {
-    listArr.push('<li>' + 'The picture: ' + allImageObjects[i].name + ' received ' + allImageObjects[i].clicked + ' clicks.' + '</li>');
+  for (var i = 0; i < instantiatedImages.length; i++) {
+    listArr.push('<li>' + 'The picture: ' + instantiatedImages[i].name + ' received ' + instantiatedImages[i].clicked + ' clicks.' + '</li>');
   }
   results.innerHTML = listArr.join('');
 }
+
+
 
 
 instantiateImages();

@@ -55,7 +55,7 @@ main span {
 
 footer {
   width: 960px;
-  height: 150px;
+  height: 900px;
   margin: 60px auto 0 auto;
   overflow: auto;
 }
@@ -64,6 +64,10 @@ footer ul {
   display: block;
   text-align: center;
   font-size: 20px;
+}
+
+footer div canvas {
+
 }
 
 .clearfix {
