@@ -155,21 +155,23 @@ function clickOverallClickPercent() {
 }
 
 function chartIndividualVotes() {
-  var data = [];
+  var clickedData = [];
+  var clickShownData = [];
 
   for (var i = 0; i < instantiatedImages.length; i++) {
-    data.push(instantiatedImages[i].clicked);
+    clickedData.push(instantiatedImages[i].clicked);
+    clickShownData.push(instantiatedImages[i].shown);
   }
 
   var chart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
       labels: allImages,
       datasets: [{
         label: 'Individual Votes per Product',
-        data: data,
-        backgroundColor: ['#444444', '#888888', '#e3e3e3', '#000000']
-      }]
+        data: clickShownData,
+        backgroundColor: ['#C051FF', '#F4FF57', '#23E8D3', '#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3', '#C051FF']
+      }],
     },
     options: {}
   });
