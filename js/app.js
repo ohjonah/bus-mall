@@ -183,7 +183,7 @@ function chartIndividualVotes() {
     clickShownData.push(instantiatedImages[i].shown);
   }
 
-  var chart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'horizontalBar',
     data: {
       labels: allImages,
