@@ -189,7 +189,7 @@ function chartIndividualVotes() {
       labels: allImages,
       datasets: [{
         label: 'Individual Votes per Product',
-        data: clickShownData,
+        data: clickedData,
         backgroundColor: ['#C051FF', '#F4FF57', '#23E8D3', '#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3', '#C051FF']
       }],
     },
