@@ -114,10 +114,10 @@ function clickImage() {
 
 // conditional to see if it has user has selected 25 pictures
 function refreshedImages() {
+  console.log(counter);
 
   if (counter === 25) {
     removeEventHandler();
-    // calculates object property values
     calculationStation();
     chartIndividualVotes();
     appendToDOM();
@@ -193,7 +193,15 @@ function chartIndividualVotes() {
         backgroundColor: ['#C051FF', '#F4FF57', '#23E8D3', '#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3','#C051FF', '#F4FF57', '#23E8D3', '#C051FF']
       }],
     },
-    options: {}
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1
+          }
+        }]
+      }
+    }
   });
 }
 
