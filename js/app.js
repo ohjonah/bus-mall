@@ -18,20 +18,13 @@ var allImages = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum',
 var canvas = document.getElementById('chart');
 var ctx = canvas.getContext('2d');
 
+loadCounterState();
 
-if (localStorage.instantiatedImages) {
-  if (JSON.parse(localStorage.counter) < 25) {
-    counter = JSON.parse(localStorage.counter);
-    console.log('localStorage counter', counter);
-    render();
-
-  } else  if (counter === 25){
-    var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
-    removeEventHandler();
-    chartIndividualVotes();
-    appendToDOM();
-  }
-
+if (counter === 25) {
+  var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
+  removeEventHandler();
+  chartIndividualVotes();
+  appendToDOM();
 } else {
   render();
 }
@@ -134,7 +127,6 @@ function refreshedImages() {
     randomImgOnDom();
     clickImage();
     saveCounterState();
-    save();
     counter++;
   }
 }
@@ -228,6 +220,14 @@ function removeEventHandler() {
 
 function saveCounterState() {
   localStorage.counter = counter;
+}
+
+function loadCounterState() {
+  if (typeof localStorage.counter === 'undefined') {
+    return;
+  } else {
+    counter = JSON.parse(localStorage.counter);
+  }
 }
 
 // appends results to DOM
