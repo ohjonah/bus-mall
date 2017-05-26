@@ -196,6 +196,9 @@ function chartIndividualVotes() {
       }],
     },
     options: {
+      legend: {
+        display: false
+      },
       scales: {
         xAxes: [{
           ticks: {
