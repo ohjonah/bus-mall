@@ -197,9 +197,8 @@ function chartIndividualVotes() {
     },
     options: {
       scales: {
-        yAxes: [{
+        xAxes: [{
           ticks: {
-            fixedStepSize: 1,
             stepSize: 1
           }
         }]
