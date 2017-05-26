@@ -20,7 +20,7 @@ var ctx = canvas.getContext('2d');
 
 loadCounterState();
 
-if (counter === 24) {
+if (counter > 24) {
   var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
   removeEventHandler();
   chartIndividualVotes();
@@ -126,7 +126,7 @@ function refreshedImages() {
     randNumGenerator();
     randomImgOnDom();
     clickImage();
-    saveCounterState();
+    save();
     counter++;
   }
 }
@@ -209,6 +209,8 @@ function chartIndividualVotes() {
 
 function save() {
   localStorage.instantiatedImages = JSON.stringify(instantiatedImages);
+  localStorage.clickedImages = JSON.stringify(clickedImages);
+  localStorage.counter = counter;
 }
 
 // removes event handler
@@ -218,18 +220,12 @@ function removeEventHandler() {
   imageThree.onclick = null;
 }
 
-function saveCounterState() {
-  localStorage.counter = counter;
-}
-
 function loadCounterState() {
   if (typeof localStorage.counter === 'undefined') {
     return;
   } else {
-    counter = JSON.parse(localStorage.counter);
-    // instantiatedImages = localStorage.instantiatedImages;
-    // console.log('local storage', localStorage.instantiatedImages);
-    // console.log('instantiatedImages', instantiatedImages);
+    counter = JSON.parse(localStorage.counter) + 1;
+    clickedImages = JSON.parse(localStorage.clickedImages);
   }
 }
 
