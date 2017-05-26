@@ -1,7 +1,7 @@
 'use strict';
 
 
-var counter = 1;
+var counter = 0;
 var randNumSet = [];
 var clickedImages = [];
 var shownImages =[];
@@ -20,7 +20,7 @@ var ctx = canvas.getContext('2d');
 
 loadCounterState();
 
-if (counter === 25) {
+if (counter === 24) {
   var instantiatedImages = JSON.parse(localStorage.instantiatedImages);
   removeEventHandler();
   chartIndividualVotes();
@@ -116,7 +116,7 @@ function clickImage() {
 function refreshedImages() {
   console.log(counter);
 
-  if (counter === 25) {
+  if (counter === 24) {
     removeEventHandler();
     calculationStation();
     chartIndividualVotes();
@@ -199,6 +199,7 @@ function chartIndividualVotes() {
       scales: {
         yAxes: [{
           ticks: {
+            fixedStepSize: 1,
             stepSize: 1
           }
         }]
@@ -227,6 +228,9 @@ function loadCounterState() {
     return;
   } else {
     counter = JSON.parse(localStorage.counter);
+    instantiatedImages = localStorage.instantiatedImages;
+    console.log('local storage', localStorage.instantiatedImages);
+    console.log('instantiatedImages', instantiatedImages);
   }
 }
 
