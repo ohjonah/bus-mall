@@ -228,9 +228,9 @@ function loadCounterState() {
     return;
   } else {
     counter = JSON.parse(localStorage.counter);
-    instantiatedImages = localStorage.instantiatedImages;
-    console.log('local storage', localStorage.instantiatedImages);
-    console.log('instantiatedImages', instantiatedImages);
+    // instantiatedImages = localStorage.instantiatedImages;
+    // console.log('local storage', localStorage.instantiatedImages);
+    // console.log('instantiatedImages', instantiatedImages);
   }
 }
 
