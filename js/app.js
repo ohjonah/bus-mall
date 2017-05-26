@@ -199,8 +199,7 @@ function chartIndividualVotes() {
       scales: {
         xAxes: [{
           ticks: {
-            min: 0,
-            stepSize: 1,
+            stepSize: 1
           }
         }]
       }
