@@ -197,10 +197,10 @@ function chartIndividualVotes() {
     },
     options: {
       scales: {
-        yAxes: [{
+        xAxes: [{
           ticks: {
-            fixedStepSize: 1,
-            stepSize: 1
+            min: 0,
+            stepSize: 1,
           }
         }]
       }
